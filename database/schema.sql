@@ -26,7 +26,7 @@ Vin_Number char(17) primary key,
 Emp_Id int not null,
 Make varchar(144) not null,
 Model varchar(144) not null, 
-License_Plate varchar(144) not null,
+License_Plate varchar(144) not null unique,
 
 constraint Emp_ID 
 	foreign key(Emp_ID) references Employee(Emp_ID),
@@ -62,6 +62,13 @@ CONSTRAINT fk_ride_customer
 
 
 );
+ALTER TABLE Ride
+ADD CONSTRAINT chk_ride_completed_at CHECK (
+    (Ride_Status = 'Completed'  AND Completed_At IS not null)
+    OR
+    (Ride_Status <> 'Completed' AND Completed_At IS null)
+);
+
 
 create table Rating(
 Rating_ID int auto_increment primary key,
@@ -87,9 +94,10 @@ Payment_ID int auto_increment primary key,
 Payment_Method_ID int not null,
 Ride_ID int not null unique, 
 Amount decimal (8,2) not null,
-Payment_Status varchar(20) not null,
+Payment_Status enum ('Pending','Completed','Refunded','Failed') 
+	not null default 'Pending',
 Tip decimal (8,2) null,
-Paid_At datetime not null,
+Processed_At datetime not null,
 
 constraint Payment_Method_ID 
 	foreign key(Payment_Method_ID) references Payment_Method(Payment_Method_ID),
