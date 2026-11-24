@@ -25,10 +25,10 @@ create table Vehicle(
 Vin_Number char(17) primary key,
 Emp_Id int not null,
 Make varchar(144) not null,
-Model varchar(144) not null,
+Model varchar(144) not null, 
 License_Plate varchar(144) not null unique,
 
-constraint Emp_ID
+constraint Emp_ID 
 	foreign key(Emp_ID) references Employee(Emp_ID),
 constraint uq_vehicle_driver UNIQUE (Vin_Number, Emp_ID)
 );
@@ -85,22 +85,22 @@ Cust_ID int not null,
 Card_Type varchar(40) not null,
 Last_Four_Digits char(4) not null,
 Payment_Token varchar(255) not null unique,
-constraint Cust_ID
+constraint Cust_ID 
 	foreign key (Cust_ID) references Customer(Cust_ID)
 );
 
 create table Payment(
 Payment_ID int auto_increment primary key,
 Payment_Method_ID int not null,
-Ride_ID int not null unique,
+Ride_ID int not null unique, 
 Amount decimal (8,2) not null,
-Payment_Status enum ('Pending','Completed','Refunded','Failed')
+Payment_Status enum ('Pending','Completed','Refunded','Failed') 
 	not null default 'Pending',
 Tip decimal (8,2) null,
 Processed_At datetime not null,
 
-constraint Payment_Method_ID
+constraint Payment_Method_ID 
 	foreign key(Payment_Method_ID) references Payment_Method(Payment_Method_ID),
-constraint Ride_ID
+constraint Ride_ID 
 	foreign key(Ride_ID) references Ride(Ride_ID)
 );

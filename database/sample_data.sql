@@ -92,8 +92,7 @@ INSERT INTO Rating (Rating_ID, Ride_ID, Score) VALUES
   (14, 19, 5),
   (15, 20, 3);
 
-INSERT INTO Payment (Payment_ID, Payment_Method_ID, Ride_ID, Amount, Payment_Status, Tip, Processed_At) VALUES
-  (1, 1, 1, 18.75, 'Completed', 3.00, '2026-10-02 08:38:00'),
+INSERT INTO Payment (Payment_ID, Payment_Method_ID, Ride_ID, Amount, Payment_Status, Tip, Processed_At) VALUES  (1, 1, 1, 18.75, 'Completed', 3.00, '2026-10-02 08:38:00'),
   (2, 3, 2, 42.10, 'Completed', 8.00, '2026-10-03 18:15:00'),
   (3, 4, 3, 15.20, 'Completed', NULL, '2026-10-05 19:18:00'),
   (4, 5, 4, 24.60, 'Completed', 2.50, '2026-10-08 12:52:00'),
